@@ -10,18 +10,23 @@
 - A preview screen is available at `/admin/svelte-preview` behind the existing `auth` and `admin` middleware.
 - Existing Vue entry points are retained.
 
-## Required local setup before build verification
+## Build and dependency verification
 
-The current `package-lock.json` still describes the old Vue/Vite dependency graph. Regenerate it locally before merging; do not use `npm ci` against the stale lockfile.
+- The npm lockfile has been regenerated from the updated manifest and committed to this branch by the frontend workflow.
+- The GitHub Actions frontend build completed successfully after switching the Vite configuration to native ESM.
+- The workflow runs `npm install` and `npm run build` for this phase branch and pull requests targeting `master`.
 
-From a clean checkout of this branch:
+For a fresh local checkout, run:
 
 ```bash
-npm install
+nvm use
+npm ci
 npm run build
 ```
 
-Review and commit the resulting `package-lock.json` diff. A GitHub Actions workflow now runs the same dependency-install and frontend-build sequence on pushes to this branch and pull requests targeting `master`. The workflow is a build check; it does not commit the regenerated lockfile. Then verify the Laravel app using a local environment:
+## Remaining Laravel runtime verification
+
+Verify the Laravel app using a local environment:
 
 ```bash
 php artisan route:list --path=admin/svelte-preview
@@ -32,15 +37,15 @@ Sign in with an account that passes the existing `auth` and `admin` middleware, 
 
 ## Acceptance checklist
 
-- [ ] `npm install` completes without peer dependency conflicts.
-- [ ] GitHub Actions frontend build workflow passes.
-- [ ] The lockfile is regenerated and committed.
-- [ ] `npm run build` completes successfully.
+- [x] Dependency installation completes without peer dependency conflicts in CI.
+- [x] GitHub Actions frontend build workflow passes.
+- [x] The lockfile is regenerated and committed.
+- [x] `npm run build` completes successfully in CI.
 - [ ] Laravel route list includes the protected preview route.
 - [ ] The preview route is accessible to an authorized admin.
 - [ ] An unauthenticated user is redirected/denied by existing middleware.
 - [ ] The existing Vue-backed pages still build and work.
-- [ ] No production business workflow has been replaced by preview data.
+- [x] No production business workflow has been replaced by preview data.
 
 ## Notes
 
