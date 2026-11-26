@@ -25,6 +25,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix("admin")->middleware(["auth", "admin"])->group(function () {
 
+    // Temporary authenticated preview for the integrated Svelte frontend.
+    Route::view('/svelte-preview', 'coffeeos')->name('svelte.preview');
+
     //admin-dashboard
 
 
