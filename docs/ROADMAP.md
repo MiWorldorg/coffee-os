@@ -25,12 +25,12 @@ CoffeeOS is being revived as a Laravel application with an integrated Svelte 5 a
 - [x] Add the Svelte Vite plugin while retaining Vue temporarily for unmigrated screens.
 - [x] Configure Tailwind CSS 3.4 to scan Svelte components and remove the unrelated duplicate `tailwind` package from the manifest.
 - [x] Add a Blade shell, Svelte entry point, and initial CoffeeOS preview screen.
-- [ ] Regenerate and commit `package-lock.json` using `npm install`.
-- [ ] Run the development server and production build; resolve any compatibility errors.
-- [ ] Verify the protected preview route in a running Laravel environment.
+- [x] Regenerate and commit `package-lock.json` from the updated manifest.
+- [x] Add GitHub Actions frontend verification and pass dependency installation plus the production build.
+- [ ] Verify the protected preview route and existing Vue pages in a running Laravel environment.
 - Exit criteria: a minimal Svelte screen loads through Laravel in development and production builds.
 
-**Status:** Foundation code is on `feat/phase-2-svelte-foundation`; dependency lockfile regeneration and runtime verification remain outstanding.
+**Status:** Foundation code, synchronized npm lockfile, and successful CI production build are on `feat/phase-2-svelte-foundation`. Laravel runtime/authentication checks remain outstanding.
 
 ### Phase 3 — CoffeeOS design system and application shell
 - Establish typography, color tokens, spacing, responsive breakpoints, and theme behavior.
@@ -67,6 +67,7 @@ CoffeeOS is being revived as a Laravel application with an integrated Svelte 5 a
 - Repository: `MiWorldorg/coffee-os`
 - Default branch: `master`
 - Phase 1: initial configuration and route review started
-- Phase 2+: not started
+- Phase 2: implementation and frontend build verification complete; Laravel runtime verification pending
+- Phase 3+: not started
 
 See [Phase 1 Audit](PHASE-1-AUDIT.md) and [Architecture](ARCHITECTURE.md).
