@@ -12,7 +12,7 @@
 
 ## Required local setup before build verification
 
-The GitHub file-edit workflow cannot run npm to regenerate the dependency lockfile. The current `package-lock.json` therefore still describes the old Vue/Vite dependency graph and must not be used with `npm ci` until regenerated.
+The current `package-lock.json` still describes the old Vue/Vite dependency graph. Regenerate it locally before merging; do not use `npm ci` against the stale lockfile.
 
 From a clean checkout of this branch:
 
@@ -21,7 +21,7 @@ npm install
 npm run build
 ```
 
-Review the resulting `package-lock.json` diff and commit it. Then verify the Laravel app using a local environment:
+Review and commit the resulting `package-lock.json` diff. A GitHub Actions workflow now runs the same dependency-install and frontend-build sequence on pushes to this branch and pull requests targeting `master`. The workflow is a build check; it does not commit the regenerated lockfile. Then verify the Laravel app using a local environment:
 
 ```bash
 php artisan route:list --path=admin/svelte-preview
@@ -33,6 +33,7 @@ Sign in with an account that passes the existing `auth` and `admin` middleware, 
 ## Acceptance checklist
 
 - [ ] `npm install` completes without peer dependency conflicts.
+- [ ] GitHub Actions frontend build workflow passes.
 - [ ] The lockfile is regenerated and committed.
 - [ ] `npm run build` completes successfully.
 - [ ] Laravel route list includes the protected preview route.
