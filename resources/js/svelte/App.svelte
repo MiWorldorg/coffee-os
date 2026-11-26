@@ -40,8 +40,9 @@
                     type="button"
                     aria-current={active === item.label ? 'page' : undefined}
                     onclick={() => (active = item.label)}
-                    class:!bg-[#718b72]={active === item.label}
-                    class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm text-white/75 transition hover:bg-white/10 hover:text-white"
+                    class={active === item.label
+                        ? 'flex items-center gap-3 rounded-xl bg-[#718b72] px-3 py-2.5 text-left text-sm text-white transition'
+                        : 'flex items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm text-white/75 transition hover:bg-white/10 hover:text-white'}
                 >
                     <span class="w-5 text-center text-base">{item.mark}</span>
                     {item.label}
