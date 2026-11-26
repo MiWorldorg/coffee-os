@@ -11,6 +11,12 @@ CoffeeOS uses one Laravel application with an integrated Svelte frontend. It is 
 - Vite compiles frontend assets through the Laravel Vite plugin.
 - MySQL remains the intended relational database, subject to confirmation from the active environment.
 
+## Frontend integration status
+
+The initial Svelte foundation is being introduced alongside the existing Vue entry point. The temporary preview is served at the authenticated admin route `/admin/svelte-preview` using `resources/views/coffeeos.blade.php`. It loads `resources/js/coffeeos.js` and `resources/js/app.css`; the Svelte root component is `resources/js/svelte/App.svelte`.
+
+The current transition intentionally retains the Vue plugin and Vue application entry point. The Svelte preview uses Tailwind CSS 3.4. The npm manifest moves the Vite toolchain to Vite 5 and Laravel Vite Plugin 1, with Svelte 5 and the Svelte Vite plugin. The npm lockfile must be regenerated before using `npm ci` or treating this branch as build-verified.
+
 ## Request flow
 
 1. The browser requests a Laravel web route.
