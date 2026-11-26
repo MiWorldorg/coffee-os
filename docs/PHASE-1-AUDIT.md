@@ -64,4 +64,4 @@ This is an initial configuration and route audit based on files readable in the 
 - [ ] Run reproducible installation, migration, test, and build checks in a suitable environment.
 - [ ] Publish a prioritized implementation issue list.
 
-Phase 1 is therefore **partially complete**. Do not begin broad dependency upgrades or delete Vue until the remaining checks are complete.
+Phase 1 is therefore **partially complete**. The team has started the isolated Svelte foundation on a separate branch, but the remaining backend, authentication, and runtime audit checks are still required before migrating business modules.
