@@ -33,9 +33,13 @@ CoffeeOS is being revived as a Laravel application with an integrated Svelte 5 a
 **Status:** Foundation code, synchronized npm lockfile, and successful CI production build are on `feat/phase-2-svelte-foundation`. Laravel runtime/authentication checks remain outstanding.
 
 ### Phase 3 — CoffeeOS design system and application shell
-- Establish typography, color tokens, spacing, responsive breakpoints, and theme behavior.
-- Build reusable navigation, layout, buttons, forms, tables, dialogs, notifications, and loading/empty/error states.
-- Exit criteria: a responsive, accessible shell with reusable UI primitives.
+- [x] Establish visual palette, typography defaults, surfaces, borders, and responsive behavior.
+- [x] Build the navigation shell, café switcher, overview heading, KPI cards, sample chart, product list, orders table, and responsive sidebar.
+- [x] Add preview banner, navigation state, order-table filtering, and mobile sidebar toggle.
+- [ ] Extract and expand reusable primitives as module migrations progress.
+- Exit criteria: a responsive shell that establishes the shared UI direction; further primitives will be extracted during module work.
+
+**Status:** Initial design-system shell is implemented on `feat/phase-3-design-system`. The dashboard is illustrative and intentionally not connected to live business data.
 
 ### Phase 4 — Authentication and first migrated modules
 - Verify login, logout, session handling, CSRF, middleware, and role/permission behavior.
@@ -68,6 +72,6 @@ CoffeeOS is being revived as a Laravel application with an integrated Svelte 5 a
 - Default branch: `master`
 - Phase 1: initial configuration and route review started
 - Phase 2: implementation and frontend build verification complete; Laravel runtime verification pending
-- Phase 3+: not started
+- Phase 3: initial design-system shell implemented on `feat/phase-3-design-system`
 
 See [Phase 1 Audit](PHASE-1-AUDIT.md) and [Architecture](ARCHITECTURE.md).
